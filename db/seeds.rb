@@ -1,7 +1,95 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+stores_list = {
+    "1480" => {"name" => "South Laredo", "store_number" => "1480", "store_email" => "hou.01480@us.stores.mcd.com"},
+    "1703" => {"name" => "SW Military", "store_number" => "1703", "store_email" => "hou.01703@us.stores.mcd.com"},
+    "1725" => {"name" => "San Pedro", "store_number" => "1725", "store_email" => "hou.01725@us.stores.mcd.com"},
+    "2962" => {"name" => "West Commerce", "store_number" => "2962", "store_email" => "hou.02962@us.stores.mcd.com"},
+    "3348" => {"name" => "Southcross", "store_number" => "3348", "store_email" => "hou.03348@us.stores.mcd.com"},
+    "3447" => {"name" => "Wurzbach", "store_number" => "3447", "store_email" => "hou.03447@us.stores.mcd.com"},
+    "5166" => {"name" => "WW White", "store_number" => "5166", "store_email" => "hou.05166@us.stores.mcd.com"},
+    "5623" => {"name" => "Roosevelt", "store_number" => "5623", "store_email" => "hou.05623@us.stores.mcd.com"},
+    "6661" => {"name" => "Hill Country", "store_number" => "6661", "store_email" => "hou.06661@us.stores.mcd.com"},
+    "7091" => {"name" => "West Houston", "store_number" => "7091", "store_email" => "hou.07091@us.stores.mcd.com"},
+    "7850" => {"name" => "Med Center", "store_number" => "7850", "store_email" => "hou.07850@us.stores.mcd.com"},
+    "10586" => {"name" => "Vance Jackson", "store_number" => "10586", "store_email" => "hou.10586@us.stores.mcd.com"},
+    "10675" => {"name" => "Guilbeau", "store_number" => "10675", "store_email" => "hou.10675@us.stores.mcd.com"},
+    "12673" => {"name" => "DeZavala", "store_number" => "12673", "store_email" => "hou.12673@us.stores.mcd.com"},
+    "13364" => {"name" => "Zarzamora", "store_number" => "13364", "store_email" => "hou.13364@us.stores.mcd.com"},
+    "14073" => {"name" => "Broadway", "store_number" => "14073", "store_email" => "hou.14073@us.stores.mcd.com"},
+    "16166" => {"name" => "WM 1604", "store_number" => "16166", "store_email" => "hou.16166@us.stores.mcd.com"},
+    "17018" => {"name" => "WM Jones Maltzburger", "store_number" => "17018", "store_email" => "hou.17018@us.stores.mcd.com"},
+    "17726" => {"name" => "Rigsby", "store_number" => "17726", "store_email" => "hou.17726@us.stores.mcd.com"},
+    "19116" => {"name" => "Babcock & Prue", "store_number" => "19116", "store_email" => "hou.19116@us.stores.mcd.com"},
+    "22796" => {"name" => "O'Conner", "store_number" => "22796", "store_email" => "hou.22796@us.stores.mcd.com"},
+    "23005" => {"name" => "Floresville", "store_number" => "23005", "store_email" => "hou.23005@us.stores.mcd.com"},
+    "24388" => {"name" => "Converse", "store_number" => "24388", "store_email" => "hou.24388@us.stores.mcd.com"},
+    "26150" => {"name" => "Stonecroft", "store_number" => "26150", "store_email" => "hou.26150@us.stores.mcd.com"},
+    "28465" => {"name" => "WM Boerne", "store_number" => "28465", "store_email" => "hou.28465@us.stores.mcd.com"},
+    "28626" => {"name" => "WM DeZavala", "store_number" => "28626", "store_email" => "hou.28626@us.stores.mcd.com"},
+    "28632" => {"name" => "WM Rigsby", "store_number" => "28632", "store_email" => "hou.28632@us.stores.mcd.com"},
+    "28656" => {"name" => "Ralph Fair", "store_number" => "28656", "store_email" => "hou.28656@us.stores.mcd.com"},
+    "29841" => {"name" => "WM Converse", "store_number" => "29841", "store_email" => "hou.29841@us.stores.mcd.com"},
+    "29844" => {"name" => "WM Vance Jackson", "store_number" => "29844", "store_email" => "hou.29844@us.stores.mcd.com"},
+    "30378" => {"name" => "WM SW Military", "store_number" => "30378", "store_email" => "hou.30378@us.stores.mcd.com"},
+    "31089" => {"name" => "WM Schertz", "store_number" => "31089", "store_email" => "hou.31089@us.stores.mcd.com"},
+    "32872" => {"name" => "Somerset", "store_number" => "32872", "store_email" => "hou.32872@us.stores.mcd.com"},
+    "34798" => {"name" => "The Rim", "store_number" => "34798", "store_email" => "hou.34798@us.stores.mcd.com"},
+    "35416" => {"name" => "Comfort", "store_number" => "35416", "store_email" => "hou.35416@us.stores.mcd.com"}
+
+}
+
+stores_list.each do |name, store_hash|
+  p = Store.create(store_hash)
+  p.save
+end
+
+users_list = {
+    "Ned" => {"first_name" => "Ned", "last_name" => "Stagg", "position" => "Owner", "email" => "nstagg@staggrp.com", "username" => "theowner", "password" => "stagg123" },
+    "Daniel" => {"first_name" => "Daniel", "last_name" => "Hernandez", "position" => "Director", "email" => "dhernandez@staggrp.com", "username" => "elrey", "password" => "stagg123" },
+    "Ali" => {"first_name" => "Ali", "last_name" => "Eskandari", "position" => "Operations Manager", "email" => "aeskandari@staggrp.com", "username" => "theom", "password" => "stagg123" },
+    "Carol" => {"first_name" => "Carol", "last_name" => "Puente", "position" => "Supervisor", "email" => "cpuente@staggrp.com", "username" => "cpuente", "password" => "stagg123" },
+    "Darren" => {"first_name" => "Darren", "last_name" => "Lassiter", "position" => "Supervisor", "email" => "dlassiter@staggrp.com", "username" => "dlassiter", "password" => "stagg123" },
+    "Jason" => {"first_name" => "Jason", "last_name" => "McCoy", "position" => "Supervisor", "email" => "jmccoy@staggrp.com", "username" => "jmccoy", "password" => "stagg123" },
+    "Letty" => {"first_name" => "Letty", "last_name" => "Martinez", "position" => "Supervisor", "email" => "lmartinez@staggrp.com", "username" => "lmartinez", "password" => "stagg123" },
+    "Patty" => {"first_name" => "Patty", "last_name" => "Ruiz", "position" => "Supervisor", "email" => "pruiz@staggrp.com", "username" => "pruiz", "password" => "stagg123" },
+    "Richard" => {"first_name" => "Richard", "last_name" => "Ainsworth", "position" => "Supervisor", "email" => "rainsworth@staggrp.com", "username" => "rainsworth", "password" => "stagg123" },
+    "Toni" => {"first_name" => "Toni", "last_name" => "Brown", "position" => "Supervisor", "email" => "tbrown@staggrp.com", "username" => "tbrown", "password" => "stagg123" },
+    "1480" => {"first_name" => "Robert", "last_name" => "Arthur", "position" => "General Manager", "email" => "hou.01480@us.stores.mcd.com", "username" => "laredo", "password" => "stagg123" },
+    "1703" => {"first_name" => "Nicole", "last_name" => "Morin", "position" => "General Manager", "email" => "hou.01703@us.stores.mcd.com", "username" => "swmilitary", "password" => "stagg123" },
+    "1725" => {"first_name" => "Nina", "last_name" => "Briones", "position" => "General Manager", "email" => "hou.01725@us.stores.mcd.com", "username" => "sanpedro", "password" => "stagg123" },
+    "2962" => {"first_name" => "Octavio", "last_name" => "Lara", "position" => "General Manager", "email" => "hou.02962@us.stores.mcd.com", "username" => "wcommerce", "password" => "stagg123" },
+    "3348" => {"first_name" => "Fred", "last_name" => "Casanova", "position" => "General Manager", "email" => "hou.03348@us.stores.mcd.com", "username" => "southcross", "password" => "stagg123" },
+    "3447" => {"first_name" => "Letty", "last_name" => "Ortiz", "position" => "General Manager", "email" => "hou.03447@us.stores.mcd.com", "username" => "wurzbach", "password" => "stagg123" },
+    "5166" => {"first_name" => "Alex", "last_name" => "Martinez", "position" => "General Manager", "email" => "hou.05166@us.stores.mcd.com", "username" => "wwwhite", "password" => "stagg123" },
+    "5623" => {"first_name" => "Olga", "last_name" => "Aguilar", "position" => "General Manager", "email" => "hou.05623@us.stores.mcd.com", "username" => "roosevelt", "password" => "stagg123" },
+    "6661" => {"first_name" => "Carmen", "last_name" => "Perez", "position" => "General Manager", "email" => "hou.06661@us.stores.mcd.com", "username" => "hillcountry", "password" => "stagg123" },
+    "7091" => {"first_name" => "Debora", "last_name" => "Carmona", "position" => "General Manager", "email" => "hou.07091@us.stores.mcd.com", "username" => "whouston", "password" => "stagg123" },
+    "7850" => {"first_name" => "Ashley", "last_name" => "Chaffin", "position" => "General Manager", "email" => "hou.07850@us.stores.mcd.com", "username" => "medcenter", "password" => "stagg123" },
+    "10586" => {"first_name" => "Phil", "last_name" => "Smetana", "position" => "General Manager", "email" => "hou.10586@us.stores.mcd.com", "username" => "vancejackson", "password" => "stagg123" },
+    "10675" => {"first_name" => "Danielle", "last_name" => "Carver", "position" => "General Manager", "email" => "hou.10675@us.stores.mcd.com", "username" => "guilbeau", "password" => "stagg123" },
+    "12673" => {"first_name" => "Veronica", "last_name" => "Manzano", "position" => "General Manager", "email" => "hou.12673@us.stores.mcd.com", "username" => "dezavala", "password" => "stagg123" },
+    "13364" => {"first_name" => "Michelle", "last_name" => "Ramos", "position" => "General Manager", "email" => "hou.13364@us.stores.mcd.com", "username" => "zarzamora", "password" => "stagg123" },
+    "14073" => {"first_name" => "Hugo", "last_name" => "Castanon", "position" => "General Manager", "email" => "hou.14073@us.stores.mcd.com", "username" => "broadway", "password" => "stagg123" },
+    "16166" => {"first_name" => "Briana", "last_name" => "Fuller", "position" => "General Manager", "email" => "hou.16166@us.stores.mcd.com", "username" => "wm1604", "password" => "stagg123" },
+    "17018" => {"first_name" => "Frank", "last_name" => "Ortiz", "position" => "General Manager", "email" => "hou.17018@us.stores.mcd.com", "username" => "wmjones", "password" => "stagg123" },
+    "17726" => {"first_name" => "Juana", "last_name" => "Montes", "position" => "General Manager", "email" => "hou.17726@us.stores.mcd.com", "username" => "rigsby", "password" => "stagg123" },
+    "19116" => {"first_name" => "Keely", "last_name" => "Pennex", "position" => "General Manager", "email" => "hou.19116@us.stores.mcd.com", "username" => "prue", "password" => "stagg123" },
+    "22796" => {"first_name" => "Danielle", "last_name" => "Cerney", "position" => "General Manager", "email" => "hou.22796@us.stores.mcd.com", "username" => "oconner", "password" => "stagg123" },
+    "23005" => {"first_name" => "Rebeca", "last_name" => "Miranda", "position" => "General Manager", "email" => "hou.23005@us.stores.mcd.com", "username" => "floresville", "password" => "stagg123" },
+    "24388" => {"first_name" => "Diane", "last_name" => "Baratchea", "position" => "General Manager", "email" => "hou.24388@us.stores.mcd.com", "username" => "converse", "password" => "stagg123" },
+    "26150" => {"first_name" => "Antonio", "last_name" => "Gass", "position" => "General Manager", "email" => "hou.26150@us.stores.mcd.com", "username" => "stonecroft", "password" => "stagg123" },
+    "28465" => {"first_name" => "Julie", "last_name" => "Alsobrooks", "position" => "General Manager", "email" => "hou.28465@us.stores.mcd.com", "username" => "wmboerne", "password" => "stagg123" },
+    "28626" => {"first_name" => "Stacey", "last_name" => "Valdez", "position" => "General Manager", "email" => "hou.28626@us.stores.mcd.com", "username" => "wmdezavala", "password" => "stagg123" },
+    "28632" => {"first_name" => "Stella", "last_name" => "Siller", "position" => "General Manager", "email" => "hou.28632@us.stores.mcd.com", "username" => "wmrigsby", "password" => "stagg123" },
+    "28656" => {"first_name" => "Monica", "last_name" => "Villegas", "position" => "General Manager", "email" => "hou.28656@us.stores.mcd.com", "username" => "ralphfair", "password" => "stagg123" },
+    "29841" => {"first_name" => "Melanie", "last_name" => "Arthur", "position" => "General Manager", "email" => "hou.29841@us.stores.mcd.com", "username" => "wmconverse", "password" => "stagg123" },
+    "29844" => {"first_name" => "Chris", "last_name" => "Arthur", "position" => "General Manager", "email" => "hou.29844@us.stores.mcd.com", "username" => "wmvancejackson", "password" => "stagg123" },
+    "30378" => {"first_name" => "Gloria", "last_name" => "Robles", "position" => "General Manager", "email" => "hou.30378@us.stores.mcd.com", "username" => "wmroosevelt", "password" => "stagg123" },
+    "31089" => {"first_name" => "Michael", "last_name" => "Henderson", "position" => "General Manager", "email" => "hou.31089@us.stores.mcd.com", "username" => "wmschertz", "password" => "stagg123" },
+    "32872" => {"first_name" => "Annette", "last_name" => "Sanderson", "position" => "General Manager", "email" => "hou.32872@us.stores.mcd.com", "username" => "somerset", "password" => "stagg123" },
+    "34798" => {"first_name" => "Josie", "last_name" => "Lozano", "position" => "General Manager", "email" => "hou.34798@us.stores.mcd.com", "username" => "therim", "password" => "stagg123" },
+    "35416" => {"first_name" => "Letty", "last_name" => "Delgado", "position" => "General Manager", "email" => "hou.35416@us.stores.mcd.com", "username" => "comfort", "password" => "stagg123" },
+}
+users_list.each do |name, user_hash|
+    p = User.create(user_hash)
+    p.save
+  end

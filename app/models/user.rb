@@ -3,5 +3,5 @@ class User < ApplicationRecord
     validates :username, :email, uniqueness: true
     has_secure_password
 
-    POSITIONS = ["Director", "Department Head", "Supervisor", "General Manager", "Manager", "Employee"]
+    POSITIONS = ["Owner", "Director", "Operations Manager", "Department Head", "Supervisor", "General Manager", "Manager", "Employee"]
 end
