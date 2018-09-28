@@ -1,0 +1,3 @@
+<%= @stores.each do |s| %>
+   <p> Edit <%= link_to s.store_number, edit_store_path(s) %></p>
+<% end %>

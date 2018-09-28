@@ -1,1 +1,7 @@
 <h1>Hi, <%= @user.first_name %></h1>
+<% @user_stores.each do |s| %>
+    <p><%= s.store_number %></p>
+<% end %>
+
+<%= link_to 'Edit My Account', edit_user_path(@user) %>
+

@@ -2,6 +2,7 @@ class StoresController < ApplicationController
     before_action :set_store, only: [:show, :edit, :update, :destroy]
 
     def index
+        @stores = Store.all
     end
 
     def show
@@ -20,7 +21,7 @@ class StoresController < ApplicationController
 
     def update
         if @store.update(store_params)
-            redirect_to user_path(session[:user_id])
+            redirect_to stores_path
         else
             render :edit
         end
