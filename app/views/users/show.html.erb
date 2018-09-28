@@ -1,7 +1,12 @@
 <h1>Hi, <%= @user.first_name %></h1>
-<% @user_stores.each do |s| %>
-    <p><%= s.store_number %></p>
+
+<% if @user.position == "Director" || @user.position == "Owner" %>
+    <button class="button button-light"><%= link_to 'All Restaurants', stores_path %></button>
+<% else %>
+    <% @user_stores.each do |s| %>
+        <p><%= s.store_number %></p>
+    <% end %>
 <% end %>
 
-<%= link_to 'Edit My Account', edit_user_path(@user) %>
+<button class="button button-light"><%= link_to 'Edit My Account', edit_user_path(@user) %></button>
 

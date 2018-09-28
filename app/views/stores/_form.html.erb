@@ -1,0 +1,53 @@
+<%= form_for @store do |f| %>
+    <div class="form-group">
+        <%= f.label :store_number, "National Number:" %>
+            <%= f.text_field :store_number, class: "form-control", required: "true" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :name, "Restaurant Name:" %>
+            <%= f.text_field :name, class: "form-control", required: "true" %>
+        <%= f.label :store_email, "Restaurant E-Mail:" %>
+            <%= f.text_field :store_email, class: "form-control", required: "true" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :street_address, "Street Address:" %>
+            <%= f.text_field :street_address, class: "form-control", required: "true" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :city, "City:" %>
+            <%= f.text_field :city, class: "form-control", required: "true" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :state, "State:" %>
+            <%= f.text_field :state, class: "form-control", required: "true" %>
+    </div>
+        <div class="form-group">
+        <%= f.label :zip_code, "Zip:" %>
+            <%= f.text_field :zip_code, class: "form-control", required: "true" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :phone, "Phone Number:" %>
+            <%= f.text_field :phone, class: "form-control", required: "true" %>
+    </div>
+    <div class="form-group">
+        <%= f.label :owner_id, "Owner/Operator" %>
+            <%= f.collection_select(:owner_id, User.where(position: "Owner"), :id, :first_name) %>
+    </div>
+    <div class="form-group">
+        <%= f.label :director_id, "Director" %>
+            <%= f.collection_select(:director_id, User.where(position: "Director"), :id, :first_name) %>
+    </div>
+        <div class="form-group">
+        <%= f.label :om_id, "Operations Manager" %>
+            <%= f.collection_select(:om_id, User.where(position: "Operations Manager"), :id, :first_name, include_blank: true) %>
+    </div>
+        <div class="form-group">
+        <%= f.label :supervisor_id, "Patch Supervisor" %>
+            <%= f.collection_select(:supervisor_id, User.where(position: "Supervisor"), :id, :first_name) %>
+    </div>
+        <div class="form-group">
+        <%= f.label :gm_id, "General Manager" %>
+            <%= f.collection_select(:gm_id, User.where(position: "General Manager"), :id, :first_name)  %>
+    </div>
+    <%= f.submit %>
+<% end %>
