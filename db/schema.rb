@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_28_132346) do
+ActiveRecord::Schema.define(version: 2018_09_29_111232) do
+
+  create_table "comments", force: :cascade do |t|
+    t.datetime "visit_date"
+    t.time "visit_time"
+    t.string "comment_type"
+    t.string "source"
+    t.string "urgent"
+    t.string "case_number"
+    t.string "first_issue"
+    t.string "first_issue_comment"
+    t.string "second_issue"
+    t.string "second_issue_comment"
+    t.string "third_issue"
+    t.string "third_issue_comment"
+    t.string "contact_type"
+    t.string "visit_type"
+    t.string "employee_named"
+    t.string "status", default: "Open"
+    t.integer "guest_id"
+    t.integer "store_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "directors", force: :cascade do |t|
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "street_address"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.string "phone"
+    t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
