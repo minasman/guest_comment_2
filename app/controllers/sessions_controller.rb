@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+    before_action :require_log_in, except: [:new, :create, :welcome]
+
     def welcome
     end
 

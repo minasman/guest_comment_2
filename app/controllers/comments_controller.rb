@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
     before_action :set_comment, only: [:show, :edit, :update, :destroy]
+    before_action :require_log_in
 
     def index
-        @comments = Comment.all
+        @comments = Comment.all.order("store_id")
+
     end
 
     def show
@@ -10,28 +12,25 @@ class CommentsController < ApplicationController
 
     def new
         @comment = Comment.new
-        @comment.guest.build(first_name: "new")
-
+        @comment.guest = Guest.new
     end
 
     def edit
     end
 
     def create
-        binding.pry
         @comment = Comment.create(comment_params)
         if @comment.save
             flash.alert = "Comment Successfully Added"
-            binding.pry
             redirect_to user_path(session[:user_id])
         else
             flash.alert = "Error Creating Comment"
-            binding.pry
             render :new
         end
     end
 
     def update
+        @comment.update = CommentUpdate.new
     end
 
     def destroy

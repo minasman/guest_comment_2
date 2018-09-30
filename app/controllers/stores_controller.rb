@@ -1,5 +1,6 @@
 class StoresController < ApplicationController
     before_action :set_store, only: [:show, :edit, :update, :destroy]
+    before_action :require_log_in
 
     def index
         @stores = Store.all

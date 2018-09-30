@@ -1,5 +1,6 @@
 class GuestsController < ApplicationController
     before_action :set_guest, only: [:show, :edit, :update, :destroy]
+    before_action :require_log_in
 
     def index
         @guests = Guest.all
