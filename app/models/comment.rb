@@ -14,8 +14,6 @@ class Comment < ApplicationRecord
     scope :local, -> { where(source: 'Local') }
     scope :voice, -> { where(source: 'VOICE') }
 
-
-
     COMMENT_TYPES = ["Complaint", "Compliment", "Inquiry"]
     SOURCE = ["1-800#", "VOICE", "Local"]
     URGENT = ["General", "Urgent"]

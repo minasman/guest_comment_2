@@ -7,23 +7,15 @@ class CommentUpdatesController < ApplicationController
         @comment.comment_updates.build
     end
 
-    def edit
-    end
-
     def create
         @comment = Comment.find(params[:comment_id])
         @comment_update = @comment.comment_updates.create(comment_params)
+        flash.notice = "Comment Successfully Added"
         if params[:comment_update][:status] && params[:comment_update][:status] == "Closed"
             @comment.status = "Closed"
             @comment.save
         end
         redirect_to comment_path(@comment)
-    end
-
-    def update
-    end
-
-    def destroy
     end
 
     private

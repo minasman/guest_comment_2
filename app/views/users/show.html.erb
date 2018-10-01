@@ -1,3 +1,9 @@
+<% if flash.alert %>
+    <div class="alert alert-danger"><%= flash.alert %></div>
+<% end %>
+<% if flash.notice %>
+    <div class="alert alert-success"><%= flash.notice %></div>
+<% end %>
 <h1>Hi, <%= @user.first_name %></h1>
 
 <button class="button button-light"><%= link_to 'Add A Comment', new_comment_path %></button>

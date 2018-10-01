@@ -6,17 +6,6 @@ class UsersController < ApplicationController
     end
 
     def show
-        stores = Store.all
-        @user_stores = []
-        if @user.position == "General Manager"
-            @user_stores = Store.find_by(gm_id: @user.id)
-        elsif @user.position == "Supervisor"
-            @user_stores = Store.where(supervisor_id: @user.id)
-        elsif @user.position == "Operations Manager"
-            @user_stores = Store.where(om_id: @user.id)
-        else
-            @user_stores = Store.all
-        end
     end
 
     def new
@@ -34,18 +23,20 @@ class UsersController < ApplicationController
         @user = User.create(user_params)
         if @user.save
             session[:user_id] = @user.id
+            flash.notice = "Successfully Created User"
             redirect_to user_path(@user)
         else
-            flash.notice = "Error Creating User"
+            flash.alert = "Error Creating User"
             render :new
         end
     end
 
     def update
         if @user.update(user_params)
+            flash.notice = "Successfully Updated User"
             redirect_to user_path(@user)
         else
-            flash.notice = "Error Updating User"
+            flash.alert = "Error Updating User"
             render :edit
         end
     end

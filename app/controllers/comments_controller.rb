@@ -23,14 +23,12 @@ class CommentsController < ApplicationController
     end
 
     def edit
-        @comment = Comment.where(case_number: params[:case_number])
-        render :show
     end
 
     def create
         @comment = Comment.create(comment_params)
         if @comment.save
-            flash.alert = "Comment Successfully Added"
+            flash.notice = "Comment Successfully Added"
             redirect_to user_path(session[:user_id])
         else
             flash.alert = "Error Creating Comment"
@@ -39,7 +37,13 @@ class CommentsController < ApplicationController
     end
 
     def update
-        binding.pry
+        if @comment = Comment.update(comment_params)
+            flash.notice = "Comment Successfully Edited"
+            redirect_to user_path(session[:user_id])
+        else
+            flash.alert = "Error Editing Comment"
+            render :edit
+        end
     end
 
     def destroy

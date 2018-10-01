@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  resources :guests
   resources :comments do
-   resources :comment_updates
+   resources :comment_updates, only: [:new, :create]
   end
   resources :stores
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
