@@ -2,13 +2,14 @@ class Comment < ApplicationRecord
     belongs_to :store
     belongs_to :guest
     has_many :comment_updates
+    accepts_nested_attributes_for :comment_updates
     validates :case_number, uniqueness: true
 
     scope :complaint, -> { where(comment_type: 'Complaint') }
     scope :compliment, -> { where(comment_type: 'Compliment') }
     scope :inquiry, -> { where(comment_type: 'Inquiry') }
     scope :open, -> { where(status: 'Open') }
-    scope :complaint, -> { where(stutus: 'Closed') }
+    scope :closed, -> { where(status: 'Closed') }
     scope :eight_hundred, -> { where(source: '1-800#') }
     scope :local, -> { where(source: 'Local') }
     scope :voice, -> { where(source: 'VOICE') }

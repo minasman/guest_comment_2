@@ -1,3 +1,5 @@
-<%= @stores.each do |s| %>
-   <p> Edit <%= link_to s.store_number, edit_store_path(s) %></p>
+<% @stores.each do |s| %>
+    <h2><%= link_to s.store_number, store_path(s) %> <%= s.name %></h2>
+    <p>General Manager: <%=User.find_by(id: s[:gm_id]).first_name %><br> Phone: <%= s.phone %>
+    Email: <%= s.store_email %><br>Open Comments: <%= s.comments.open.count %> Closed Comments: <%= s.comments.closed.count %> </p>
 <% end %>

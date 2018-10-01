@@ -2,19 +2,18 @@
 <p>Restaurant #: <%= link_to @comment.store.store_number, store_path(@comment.store) %> Date: <%= @comment.visit_date.strftime("%m/%d/%Y") %> Time: <%= @comment.visit_time.strftime("%I:%M%p") %><br>
     Guest: <%= link_to @comment.guest.first_name + " " + @comment.guest.last_name, guest_path(@comment.guest) %> Phone: <%= number_to_phone(@comment.guest.phone) %><br>
     Issue: <%= @comment.first_issue %> Source: <%= @comment.source %> Type: <%= @comment.comment_type %> </p>
-<%= form_for @update do |f| %>
-    <%= f.label :update_date, "Date Updated" %>
-        <%= f.date_field :update_date %>
-    <%= f.label :update_type, "Contact Type" %>
-        <%= f.select :update_type, Comment::CONTACT_TYPE %>
-    <%= f.label :employee_name, "Who Contacted" %>
-        <%= f.text_field :employee_name %><br>
-    <%= f.label :current_update, "Update" %><br>
-        <%= f.text_area :current_update, size: "50x5" %><br>
-    <%= fields_for @comment do |comment| %>
-        <%= comment.label :status, "Close Comment?" %>
-        <%= comment.radio_button :status , "Closed"%><br>
+<%= form_for @comment do |c| %>
+    <%= c.fields_for :comment_updates do |f| %>
+        <%= f.label :update_date, "Date Updated" %>
+            <%= f.date_field :update_date %>
+        <%= f.label :update_type, "Contact Type" %>
+            <%= f.select :update_type, Comment::CONTACT_TYPE %>
+        <%= f.label :employee_name, "Who Contacted" %>
+            <%= f.text_field :employee_name %><br>
+        <%= f.label :current_update, "Update" %><br>
+            <%= f.text_area :current_update, size: "50x5" %><br>
     <% end %>
-    <%= f.hidden_field :comment_id, value: @comment.id %>
-    <%= f.submit %>
+    <%= c.label :status, "Close Comment?" %>
+    <%= c.radio_button :status , "Closed"%><br>
+    <%= c.submit %>
 <% end %>

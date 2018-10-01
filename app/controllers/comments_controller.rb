@@ -3,8 +3,7 @@ class CommentsController < ApplicationController
     before_action :require_log_in
 
     def index
-        @comments = Comment.all.order("store_id")
-
+        @comments = Comment.open.order("store_id")
     end
 
     def show
@@ -16,6 +15,8 @@ class CommentsController < ApplicationController
     end
 
     def edit
+        @comment = Comment.where(case_number: params[:case_number])
+        render :show
     end
 
     def create
@@ -30,7 +31,7 @@ class CommentsController < ApplicationController
     end
 
     def update
-        @comment.update = CommentUpdate.new
+        binding.pry
     end
 
     def destroy
@@ -38,7 +39,7 @@ class CommentsController < ApplicationController
 
     private
     def set_comment
-        @comment = Comment.find(session[:user_id])
+        @comment = Comment.find(params[:id])
     end
     def comment_params
         params.require(:comment).permit(:visit_date, :visit_time, :comment_type, :source, :urgent, :case_number, :first_issue, :first_issue_comment, :second_issue, :second_issue_comment, :third_issue, :third_issue_comment, :contact_type, :visit_type, :employee_named, :status, :guest_id, :store_id,
