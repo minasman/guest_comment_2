@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   post '/signin' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
+  get '/open' => 'comments#open'
+  get '/closed' => 'comments#closed'
 end

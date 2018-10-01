@@ -1,7 +1,8 @@
 <h1>Hi, <%= @user.first_name %></h1>
 
 <button class="button button-light"><%= link_to 'Add A Comment', new_comment_path %></button>
-<button class="button button-light"><%= link_to 'Open Comments', comments_path %></button>
+<button class="button button-light"><%= link_to 'Open Comments', '/open' %></button>
+<button class="button button-light"><%= link_to 'Closed Comments', '/closed' %></button>
 <button class="button button-light"><%= link_to 'Restaurants', stores_path %></button>
 <button class="button button-light"><%= link_to 'Edit My Account', edit_user_path(@user) %></button>
 

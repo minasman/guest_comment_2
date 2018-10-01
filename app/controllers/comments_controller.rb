@@ -9,6 +9,14 @@ class CommentsController < ApplicationController
     def show
     end
 
+    def open
+        @comments = Comment.open.order("store_id")
+    end
+
+    def closed
+        @comments = Comment.closed.order("store_id")
+    end
+
     def new
         @comment = Comment.new
         @comment.guest = Guest.new

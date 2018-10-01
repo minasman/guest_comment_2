@@ -1,0 +1,6 @@
+<h1>Closed Comments</h1>
+<% @comments.each do |c| %>
+    <p><%= link_to c.store.store_number, store_path(c.store) %> Case Number: <%=link_to c.case_number, comment_path(c) %> Incident Date: <%= c.visit_date.strftime("%m/%d/%Y") %> Time: <%= c.visit_time.strftime("%I:%M %p") %><br>
+    Guest: <%= c.guest.first_name + " " + c.guest.last_name %> Main Issue: <%= c.first_issue %> # Updates <%= c.comment_updates.count %> Status is <%= c.status %> <p>
+        <button class="button button-light"><%= link_to 'Update Comment', comment_path(c) %></button>
+<% end %>
