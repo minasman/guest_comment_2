@@ -25,6 +25,9 @@
             <li class="nav-item">
               <a class="nav-link" href="/signin">Sign In</a>
             </li>
+            <li class="nav-item">
+              <%= link_to 'Log in with Facebook!', '/auth/facebook', class: "nav-link" %>
+            </li>
           <% end %>
           <% if logged_in? %>
             <li class="nav-item">

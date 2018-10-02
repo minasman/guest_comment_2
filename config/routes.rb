@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   get '/open' => 'comments#open'
   get '/closed' => 'comments#closed'
+  get '/auth/facebook/callback' => 'sessions#facebook'
 end
