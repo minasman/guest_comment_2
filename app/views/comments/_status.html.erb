@@ -3,6 +3,6 @@
     Guest: <%= c.guest.first_name + " " + c.guest.last_name %> Main Issue: <%= c.first_issue %> # Updates <%= c.comment_updates.count %> Status is <%= c.status %> <p>
     <% if c.status == "Open" %>
         <button class="button button-light"><%= link_to 'Edit Comment', edit_comment_path(c) %></button>
-        <button class="button button-light"><%= link_to 'Update Comment', comment_path(c) %></button>
+        <button class="button button-light"><%= link_to 'Update Comment', new_comment_comment_update_path(c) %></button>
     <% end %>
 <% end %>

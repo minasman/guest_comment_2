@@ -1,0 +1,26 @@
+<% if flash.alert %>
+    <div class="alert alert-danger"><%= flash.alert %></div>
+<% end %>
+<% if flash.notice %>
+    <div class="alert alert-success"><%= flash.notice %></div>
+<% end %>
+<h1>Case Number :<%= @comment.case_number %></h1>
+<p><%= link_to @comment.store.store_number, store_path(@comment.store) %> Incident Date: <%= @comment.visit_date.strftime("%m/%d/%Y") %> Time: <%= @comment.visit_time.strftime("%I:%M %p") %> Status: <%= @comment.status %> <br>
+    Guest: <%= @comment.guest.first_name + " " + @comment.guest.last_name %> Main Issue: <%= @comment.first_issue %> # Updates <%= @comment.comment_updates.count %> <p>
+
+<% if @comment.status == "Open" %>
+    <h2>Update Comment:</h2>
+    <%= form_with(model: [ @comment, @comment.comment_updates.build ], local: true) do |form| %>
+        <%= form.label :update_date, "Date Updated" %>
+            <%= form.date_field :update_date, required: "true" %>
+        <%= form.label :update_type, "Contact Type" %>
+            <%= form.select :update_type, Comment::CONTACT_TYPE, required: "true" %>
+        <%= form.label :employee_name, "Who Contacted" %>
+            <%= form.text_field :employee_name, required: "true" %><br>
+        <%= form.label :current_update, "Update" %><br>
+            <%= form.text_area :current_update, size: "50x5", required: "true" %><br>
+        <%= form.label :status, "Close Comment?" %>
+        <%= form.radio_button :status , "Closed"%><br>
+        <%= form.submit %>
+    <% end %>
+<% end %>

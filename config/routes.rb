@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :comments do
-   resources :comment_updates, only: [:new, :create]
+   resources :comment_updates, only: [:new, :create, :index]
   end
   resources :stores
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,14 +1,15 @@
 class CommentUpdatesController < ApplicationController
-    before_action :set_comment_update, only: [:show, :edit, :update, :destroy]
+    before_action :set_comment, only: [:new, :index, :create]
     before_action :require_log_in
 
+    def index
+    end
+
     def new
-        @comment = Comment.find(params[:comment_id])
         @comment.comment_updates.build
     end
 
     def create
-        @comment = Comment.find(params[:comment_id])
         @comment_update = @comment.comment_updates.create(comment_params)
         flash.notice = "Comment Successfully Added"
         if params[:comment_update][:status] && params[:comment_update][:status] == "Closed"
@@ -19,8 +20,8 @@ class CommentUpdatesController < ApplicationController
     end
 
     private
-    def set_comment_update
-        @update = CommentUpdate.find(session[:user_id])
+    def set_comment
+        @comment = Comment.find(params[:comment_id])
     end
     def comment_params
         params.require(:comment_update).permit(:update_date, :update_time, :update_type, :employee_name, :current_update, :comment_id)
